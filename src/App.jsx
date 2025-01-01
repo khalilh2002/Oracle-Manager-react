@@ -5,7 +5,7 @@ import UserForm from "./components/UserForm";
 import RoleForm from "./components/RoleForm";
 import QuotaForm from "./components/QuotaForm";
 import PasswordPolicyForm from "./components/PasswordPolicyForm";
-import SecurityPolicyForm from "./components/SecurityPolicyForm";
+import SecurityPolicyForm from "./components/SecurityForm";
 
 const App = () => {
   return (
