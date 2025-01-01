@@ -11,6 +11,8 @@ const Navbar = () => {
         <li><Link to="/quotas" style={styles.link}>Quotas</Link></li>
         <li><Link to="/password-policies" style={styles.link}>Password Policies</Link></li>
         <li><Link to="/security-policies" style={styles.link}>Security Policies</Link></li>
+        <li><Link to="/performance" style={styles.link}>Performance</Link></li>
+
       </ul>
     </nav>
   );

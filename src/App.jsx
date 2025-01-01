@@ -6,6 +6,7 @@ import RoleForm from "./components/RoleForm";
 import QuotaForm from "./components/QuotaForm";
 import PasswordPolicyForm from "./components/PasswordPolicyForm";
 import SecurityPolicyForm from "./components/SecurityForm";
+import Dashboard from "./components/performence/Dashboard";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
             <Route path="/password-policies" element={<PasswordPolicyForm />} />
             <Route path="/security-policies" element={<SecurityPolicyForm />} />
             <Route path="/" element={<h2>Welcome to the Management System</h2>} />
+            <Route path="/performance" element={<Dashboard></Dashboard>}/>
           </Routes>
         </div>
       </div>
