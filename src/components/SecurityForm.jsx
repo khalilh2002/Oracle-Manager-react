@@ -5,7 +5,7 @@ const SecurityPolicyForm = () => {
   const [encryptionFormData, setEncryptionFormData] = useState({
     tableName: "",
     columnName: "",
-    encryptionAlgorithm: "AES256", // Default encryption algorithm
+    encryptionAlgorithm: "AES256",
   });
 
   const [auditFormData, setAuditFormData] = useState({
@@ -18,7 +18,7 @@ const SecurityPolicyForm = () => {
     tableName: "",
     policyName: "",
     policyFunction: "",
-    statementTypes: "SELECT", // Default to SELECT
+    statementTypes: "SELECT",
   });
 
   const handleEncryptionChange = (e) => {
@@ -64,124 +64,70 @@ const SecurityPolicyForm = () => {
   };
 
   return (
-    <div>
-      <h2>Security Policy Management</h2>
+    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <h2 className="text-2xl font-bold mb-6 text-gray-800">Security Policy Management</h2>
 
-      <section>
-        <h3>Configure Encryption</h3>
-        <form>
-          <label>Table Name:</label>
-          <input
-            type="text"
-            name="tableName"
-            value={encryptionFormData.tableName}
-            onChange={handleEncryptionChange}
-            required
-          />
+      <div className="space-y-8">
+        <section>
+          <h3 className="text-xl font-semibold mb-4 text-gray-700">Configure Encryption</h3>
+          <form className="space-y-4">
+            <FormField label="Table Name" name="tableName" value={encryptionFormData.tableName} onChange={handleEncryptionChange} />
+            <FormField label="Column Name" name="columnName" value={encryptionFormData.columnName} onChange={handleEncryptionChange} />
+            <FormField label="Encryption Algorithm" name="encryptionAlgorithm" value={encryptionFormData.encryptionAlgorithm} onChange={handleEncryptionChange} />
+            <Button onClick={handleConfigureEncryption}>Configure Encryption</Button>
+          </form>
+        </section>
 
-          <label>Column Name:</label>
-          <input
-            type="text"
-            name="columnName"
-            value={encryptionFormData.columnName}
-            onChange={handleEncryptionChange}
-            required
-          />
+        <section>
+          <h3 className="text-xl font-semibold mb-4 text-gray-700">Configure Audit</h3>
+          <form className="space-y-4">
+            <FormField label="Action Name" name="actionName" value={auditFormData.actionName} onChange={handleAuditChange} />
+            <FormField label="Object Name" name="objectName" value={auditFormData.objectName} onChange={handleAuditChange} />
+            <Button onClick={handleConfigureAudit}>Configure Audit</Button>
+          </form>
+        </section>
 
-          <label>Encryption Algorithm:</label>
-          <input
-            type="text"
-            name="encryptionAlgorithm"
-            value={encryptionFormData.encryptionAlgorithm}
-            onChange={handleEncryptionChange}
-          />
-
-          <button type="button" onClick={handleConfigureEncryption}>
-            Configure Encryption
-          </button>
-        </form>
-      </section>
-
-      <section>
-        <h3>Configure Audit</h3>
-        <form>
-          <label>Action Name:</label>
-          <input
-            type="text"
-            name="actionName"
-            value={auditFormData.actionName}
-            onChange={handleAuditChange}
-            required
-          />
-
-          <label>Object Name:</label>
-          <input
-            type="text"
-            name="objectName"
-            value={auditFormData.objectName}
-            onChange={handleAuditChange}
-            required
-          />
-
-          <button type="button" onClick={handleConfigureAudit}>
-            Configure Audit
-          </button>
-        </form>
-      </section>
-
-      <section>
-        <h3>Configure VPD</h3>
-        <form>
-          <label>Schema Name:</label>
-          <input
-            type="text"
-            name="schemaName"
-            value={vpdFormData.schemaName}
-            onChange={handleVPDChange}
-          />
-
-          <label>Table Name:</label>
-          <input
-            type="text"
-            name="tableName"
-            value={vpdFormData.tableName}
-            onChange={handleVPDChange}
-            required
-          />
-
-          <label>Policy Name:</label>
-          <input
-            type="text"
-            name="policyName"
-            value={vpdFormData.policyName}
-            onChange={handleVPDChange}
-            required
-          />
-
-          <label>Policy Function:</label>
-          <input
-            type="text"
-            name="policyFunction"
-            value={vpdFormData.policyFunction}
-            onChange={handleVPDChange}
-            required
-          />
-
-          <label>Statement Types:</label>
-          <input
-            type="text"
-            name="statementTypes"
-            value={vpdFormData.statementTypes}
-            onChange={handleVPDChange}
-          />
-
-          <button type="button" onClick={handleConfigureVPD}>
-            Configure VPD
-          </button>
-        </form>
-      </section>
+        <section>
+          <h3 className="text-xl font-semibold mb-4 text-gray-700">Configure VPD</h3>
+          <form className="space-y-4">
+            <FormField label="Schema Name" name="schemaName" value={vpdFormData.schemaName} onChange={handleVPDChange} />
+            <FormField label="Table Name" name="tableName" value={vpdFormData.tableName} onChange={handleVPDChange} />
+            <FormField label="Policy Name" name="policyName" value={vpdFormData.policyName} onChange={handleVPDChange} />
+            <FormField label="Policy Function" name="policyFunction" value={vpdFormData.policyFunction} onChange={handleVPDChange} />
+            <FormField label="Statement Types" name="statementTypes" value={vpdFormData.statementTypes} onChange={handleVPDChange} />
+            <Button onClick={handleConfigureVPD}>Configure VPD</Button>
+          </form>
+        </section>
+      </div>
     </div>
   );
 };
 
+const FormField = ({ label, name, value, onChange, type = "text" }) => (
+  <div>
+    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor={name}>
+      {label}:
+    </label>
+    <input
+      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      id={name}
+      type={type}
+      name={name}
+      value={value}
+      onChange={onChange}
+    />
+  </div>
+);
+
+const Button = ({ onClick, children, className = "" }) => (
+  <button
+    className={`bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-150 ease-in-out ${className}`}
+    type="button"
+    onClick={onClick}
+  >
+    {children}
+  </button>
+);
+
 export default SecurityPolicyForm;
+
