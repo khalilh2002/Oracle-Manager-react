@@ -8,6 +8,7 @@ import QuotaForm from "./components/QuotaForm";
 import PasswordPolicyForm from "./components/PasswordPolicyForm";
 import SecurityPolicyForm from "./components/SecurityForm";
 import DataGuardForm from "./components/DataGuardForm";
+import Dashboard from "./components/performence/Dashboard"
 
 const App = () => {
   return (

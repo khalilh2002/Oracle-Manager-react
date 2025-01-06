@@ -6,6 +6,10 @@ export const createUser = async (userRequest) => {
   return await axios.post(`${API_BASE_URL}/user/create`, userRequest);
 };
 
+export const listUsers = async () => {
+  return await axios.get(`${API_BASE_URL}/user/list`);
+};
+
 export const modifyUser = async (userRequest) => {
   return await axios.put(`${API_BASE_URL}/user/modify`, userRequest);
 };

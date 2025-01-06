@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Database, Users, Shield, Key, Lock, Server } from 'react-feather';
-import orclImage from '../assets/orcl2.jpeg'; // Import the image
+import orclImage from '../assets/orclbg.png'; // Import the image
 
 const HomePage = () => {
   return (
@@ -9,11 +9,11 @@ const HomePage = () => {
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div className="px-4 py-6 sm:px-0">
           {/* Header with Image */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 w-100">
             <img
               src={orclImage}
               alt="Oracle Logo"
-              className="mx-auto h-20 w-auto mb-4"
+              className="mx-auto h-40 w-auto mb-4"
             />
             <h1 className="text-4xl font-bold text-oracle-black mb-4">
               Oracle Management System
