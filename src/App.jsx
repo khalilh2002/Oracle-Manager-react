@@ -7,6 +7,7 @@ import RoleForm from "./components/RoleForm";
 import QuotaForm from "./components/QuotaForm";
 import PasswordPolicyForm from "./components/PasswordPolicyForm";
 import SecurityPolicyForm from "./components/SecurityForm";
+import Dashboard from "./components/performence/Dashboard";
 import DataGuardForm from "./components/DataGuardForm";
 
 const App = () => {
@@ -22,7 +23,8 @@ const App = () => {
             <Route path="/quotas" element={<QuotaForm />} />
             <Route path="/password-policies" element={<PasswordPolicyForm />} />
             <Route path="/security-policies" element={<SecurityPolicyForm />} />
-            <Route path="/dataguard" element={<DataGuardForm />} />
+            <Route path="/performance" element={<Dashboard></Dashboard>}/>
+
           </Routes>
         </main>
         <footer className="bg-oracle-black text-white py-8">
@@ -47,4 +49,3 @@ const App = () => {
 };
 
 export default App;
-
