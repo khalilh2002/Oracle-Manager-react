@@ -46,7 +46,6 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <h1>Performance Dashboard</h1>
       <div className="dashboard-grid">
         <CurrentPerformance data={currentData} />
         <IOPerformance data={ioData} />

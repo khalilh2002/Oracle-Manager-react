@@ -9,6 +9,7 @@ import PasswordPolicyForm from "./components/PasswordPolicyForm";
 import SecurityPolicyForm from "./components/SecurityForm";
 import DataGuardForm from "./components/DataGuardForm";
 import Dashboard from "./components/performence/Dashboard"
+import PerformanceOptimization from "./components/Optimization/PerformanceOptimization.jsx";
 
 const App = () => {
   return (
@@ -24,7 +25,7 @@ const App = () => {
             <Route path="/password-policies" element={<PasswordPolicyForm />} />
             <Route path="/security-policies" element={<SecurityPolicyForm />} />
             <Route path="/dataguard" element={<DataGuardForm />} />
-            <Route path="/performance" element={<Dashboard></Dashboard>}/>
+            <Route path="/performance" element={<PerformanceOptimization></PerformanceOptimization>}/>
           </Routes>
         </main>
         <footer className="bg-oracle-black text-white py-8">
