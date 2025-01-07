@@ -25,7 +25,9 @@ const App = () => {
             <Route path="/password-policies" element={<PasswordPolicyForm />} />
             <Route path="/security-policies" element={<SecurityPolicyForm />} />
             <Route path="/dataguard" element={<DataGuardForm />} />
-            <Route path="/performance" element={<PerformanceOptimization></PerformanceOptimization>}/>
+            <Route path="/performance" element={<Dashboard></Dashboard>}/>
+            <Route path="/optimization" element={<PerformanceOptimization></PerformanceOptimization>}/>
+
           </Routes>
         </main>
         <footer className="bg-oracle-black text-white py-8">
