@@ -32,8 +32,7 @@ const Navbar = () => {
               <NavLink to="/dataguard" active={location.pathname === '/dataguard'}>Data Guard</NavLink>
               <NavLink to="/performance" active={location.pathname === '/performance'}>performance Chart</NavLink>
               <NavLink to="/optimization" active={location.pathname === '/optimization'}>optimization Sql</NavLink>
-
-
+              <NavLink to="/rman" active={location.pathname === '/rman'}>Rman </NavLink>
             </div>
           </div>
           <div className="md:hidden">

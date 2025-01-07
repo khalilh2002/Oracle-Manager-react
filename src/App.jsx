@@ -10,6 +10,7 @@ import SecurityPolicyForm from "./components/SecurityForm";
 import DataGuardForm from "./components/DataGuardForm";
 import Dashboard from "./components/performence/Dashboard"
 import PerformanceOptimization from "./components/Optimization/PerformanceOptimization.jsx";
+import RMANOperations from "./components/rman/RMANOperations.jsx";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
             <Route path="/dataguard" element={<DataGuardForm />} />
             <Route path="/performance" element={<Dashboard></Dashboard>}/>
             <Route path="/optimization" element={<PerformanceOptimization></PerformanceOptimization>}/>
+            <Route path="/rman" element={<RMANOperations></RMANOperations>}/>
 
           </Routes>
         </main>
