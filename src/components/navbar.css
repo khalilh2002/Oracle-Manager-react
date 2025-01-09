@@ -1,0 +1,39 @@
+@keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translate3d(0, -20px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  .animate-fadeInDown {
+    animation: fadeInDown 0.5s ease-out;
+  }
+  
+  .nav-shadow {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .nav-blur {
+    backdrop-filter: blur(5px);
+  }
+  
+  /* New styles */
+  body {
+    padding-top: 80px; /* Matches the navbar height */
+  }
+  
+  nav {
+    height: 80px; /* Consistent height */
+  }
+  
+  .fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  

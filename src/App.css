@@ -2,3 +2,107 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Custom animations */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.animate-fade-in-delay {
+  animation: fadeIn 1s ease-out 0.5s forwards;
+  opacity: 0;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Oracle custom colors */
+.bg-oracle-red {
+  background-color: #f80000;
+}
+
+.bg-oracle-dark-red {
+  background-color: #b80000;
+}
+
+.text-oracle-red {
+  color: #f80000;
+}
+
+.text-oracle-dark-red {
+  color: #b80000;
+}
+
+/* Hover states */
+.hover\:bg-oracle-dark-red:hover {
+  background-color: #b80000;
+}
+
+.hover\:text-oracle-dark-red:hover {
+  color: #b80000;
+}
+
+/* Focus states */
+.focus\:ring-oracle-red:focus {
+  --tw-ring-color: #f80000;
+}
+
+/* Typography */
+.font-oracle {
+  font-family: 'Oracle Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Transitions */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Transforms */
+.transform {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.hover\:-translate-y-1:hover {
+  --tw-translate-y: -0.25rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}

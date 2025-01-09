@@ -1,44 +1,75 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from 'react-feather';
-import orclImage from '../assets/orcldb.png'; // Import the image
+import { Menu, X, ChevronDown } from 'react-feather';
+import orclImage from '../assets/orcldb.png';
+import './navbar.css'
 
 const Navbar = () => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 10;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
+    };
+
+    document.addEventListener('scroll', handleScroll);
+    return () => {
+      document.removeEventListener('scroll', handleScroll);
+    };
+  }, [scrolled]);
+
+  const navItems = [
+    { to: "/users", label: "Users" },
+    { to: "/roles", label: "Roles" },
+    { to: "/quotas", label: "Quotas" },
+    { to: "/password-policies", label: "Password Policies" },
+    { to: "/security-policies", label: "Security Policies" },
+    { to: "/dataguard", label: "Data Guard" },
+    { to: "/performance", label: "Performance Chart" },
+    { to: "/optimization", label: "Optimization SQL" },
+    { to: "/rman", label: "RMAN" },
+  ];
 
   return (
-    <nav className="bg-oracle-red shadow-lg font-oracle">
+    <nav
+  className={`fixed w-full z-50 h-20 transition-all duration-300 ${
+    scrolled ? 'bg-oracle-red shadow-lg' : 'bg-transparent'
+  }`}
+>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo with Image */}
+        <div className="flex items-center justify-between h-20">
           <div className="flex items-center">
-            <Link to="/" className="flex items-center space-x-3">
+            <Link to="/" className="flex items-center space-x-3 group">
               <img
                 src={orclImage}
                 alt="Oracle Logo"
-                className="h-10 w-auto"
+                className="h-12 w-auto transition-transform duration-300 group-hover:scale-110"
               />
-              <span className="text-white text-xl font-bold">Oracle Management System</span>
+              <span className={`text-2xl font-bold transition-colors duration-300 ${scrolled ? 'text-white' : 'text-oracle-red'}`}>
+                Oracle Management System
+              </span>
             </Link>
           </div>
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <div className="ml-10 flex items-baseline space-x-4">
-              <NavLink to="/users" active={location.pathname === '/users'}>Users</NavLink>
-              <NavLink to="/roles" active={location.pathname === '/roles'}>Roles</NavLink>
-              <NavLink to="/quotas" active={location.pathname === '/quotas'}>Quotas</NavLink>
-              <NavLink to="/password-policies" active={location.pathname === '/password-policies'}>Password Policies</NavLink>
-              <NavLink to="/security-policies" active={location.pathname === '/security-policies'}>Security Policies</NavLink>
-              <NavLink to="/dataguard" active={location.pathname === '/dataguard'}>Data Guard</NavLink>
-              <NavLink to="/performance" active={location.pathname === '/performance'}>performance Chart</NavLink>
-              <NavLink to="/optimization" active={location.pathname === '/optimization'}>optimization Sql</NavLink>
-              <NavLink to="/rman" active={location.pathname === '/rman'}>Rman </NavLink>
+              {navItems.map((item) => (
+                <NavLink key={item.to} to={item.to} active={location.pathname === item.to} scrolled={scrolled}>
+                  {item.label}
+                </NavLink>
+              ))}
             </div>
           </div>
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white hover:bg-oracle-dark-red focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              className={`inline-flex items-center justify-center p-2 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white transition-colors duration-300 ${
+                scrolled ? 'hover:bg-oracle-dark-red' : 'hover:bg-oracle-red'
+              }`}
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -46,14 +77,13 @@ const Navbar = () => {
         </div>
       </div>
       {isOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <MobileNavLink to="/users" active={location.pathname === '/users'}>Users</MobileNavLink>
-            <MobileNavLink to="/roles" active={location.pathname === '/roles'}>Roles</MobileNavLink>
-            <MobileNavLink to="/quotas" active={location.pathname === '/quotas'}>Quotas</MobileNavLink>
-            <MobileNavLink to="/password-policies" active={location.pathname === '/password-policies'}>Password Policies</MobileNavLink>
-            <MobileNavLink to="/security-policies" active={location.pathname === '/security-policies'}>Security Policies</MobileNavLink>
-            <MobileNavLink to="/dataguard" active={location.pathname === '/dataguard'}>Data Guard</MobileNavLink>
+        <div className="lg:hidden">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-oracle-red shadow-lg">
+            {navItems.map((item) => (
+              <MobileNavLink key={item.to} to={item.to} active={location.pathname === item.to}>
+                {item.label}
+              </MobileNavLink>
+            ))}
           </div>
         </div>
       )}
@@ -61,14 +91,18 @@ const Navbar = () => {
   );
 };
 
-const NavLink = ({ to, children, active }) => (
+const NavLink = ({ to, children, active, scrolled }) => (
   <Link
     to={to}
-    className={`${
-      active
+    className={`
+      px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ease-in-out
+      ${active
         ? 'bg-oracle-dark-red text-white'
-        : 'text-white hover:bg-oracle-dark-red hover:text-white'
-    } px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out`}
+        : scrolled
+          ? 'text-white hover:bg-oracle-dark-red hover:text-white'
+          : 'text-oracle-red hover:bg-oracle-red hover:text-white'
+      }
+    `}
   >
     {children}
   </Link>
@@ -77,14 +111,17 @@ const NavLink = ({ to, children, active }) => (
 const MobileNavLink = ({ to, children, active }) => (
   <Link
     to={to}
-    className={`${
-      active
+    className={`
+      block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ease-in-out
+      ${active
         ? 'bg-oracle-dark-red text-white'
         : 'text-white hover:bg-oracle-dark-red hover:text-white'
-    } block px-3 py-2 rounded-md text-base font-medium`}
+      }
+    `}
   >
     {children}
   </Link>
 );
 
 export default Navbar;
+
