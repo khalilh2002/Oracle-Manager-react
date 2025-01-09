@@ -33,22 +33,7 @@ const App = () => {
 
           </Routes>
         </main>
-        <footer className="bg-oracle-black text-white py-8">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-wrap justify-between items-center">
-              <div className="w-full md:w-1/3 text-center md:text-left mb-4 md:mb-0">
-                <h3 className="text-xl font-bold">Oracle Management System</h3>
-              </div>
-              <div className="w-full md:w-1/3 text-center mb-4 md:mb-0">
-                <p>&copy; 2023 Oracle. All rights reserved.</p>
-              </div>
-              <div className="w-full md:w-1/3 text-center md:text-right">
-                <a href="#" className="text-white hover:text-oracle-red mr-4">Privacy Policy</a>
-                <a href="#" className="text-white hover:text-oracle-red">Terms of Service</a>
-              </div>
-            </div>
-          </div>
-        </footer>
+        
       </div>
     </Router>
   );
