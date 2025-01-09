@@ -5,7 +5,7 @@ import HomePage from "./components/HomePage";
 import UserForm from "./components/UserForm";
 import RoleForm from "./components/RoleForm";
 import QuotaForm from "./components/QuotaForm";
-import PasswordPolicyForm from "./components/PasswordPolicyForm";
+import PasswordPolicyManagement from "./components/PasswordPolicyList";
 import SecurityPolicyForm from "./components/SecurityForm";
 import DataGuardForm from "./components/DataGuardForm";
 import Dashboard from "./components/performence/Dashboard"
@@ -23,7 +23,7 @@ const App = () => {
             <Route path="/users" element={<UserForm />} />
             <Route path="/roles" element={<RoleForm />} />
             <Route path="/quotas" element={<QuotaForm />} />
-            <Route path="/password-policies" element={<PasswordPolicyForm />} />
+            <Route path="/password-policies" element={<PasswordPolicyManagement />} />
             <Route path="/security-policies" element={<SecurityPolicyForm />} />
             <Route path="/dataguard" element={<DataGuardForm />} />
             <Route path="/performance" element={<Dashboard></Dashboard>}/>
